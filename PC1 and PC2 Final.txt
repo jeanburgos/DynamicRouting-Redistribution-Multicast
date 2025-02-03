@@ -1,0 +1,35 @@
+PC1 
+
+!
+interface GigabitEthernet0/3
+ ip address 101.0.0.2 255.255.255.0
+ duplex auto
+ speed auto
+ media-type rj45
+!
+ip forward-protocol nd
+!
+!
+no ip http server
+no ip http secure-server
+ip route 0.0.0.0 0.0.0.0 101.0.0.1
+!
+ipv6 ioam timestamp
+
+
+
+PC 2
+interface GigabitEthernet0/3
+ ip address 51.0.0.2 255.255.255.0
+ duplex auto
+ speed auto
+ media-type rj45
+!
+ip forward-protocol nd
+!
+!
+no ip http server
+no ip http secure-server
+ip route 0.0.0.0 0.0.0.0 51.0.0.1
+!
+ipv6 ioam timestamp
