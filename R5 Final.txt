@@ -1,0 +1,113 @@
+R5
+
+! Last configuration change at 21:13:46 UTC Sat Feb 1 2025
+!
+version 15.9
+service timestamps debug datetime msec
+service timestamps log datetime msec
+no service password-encryption
+!
+hostname inserthostname-here
+!
+boot-start-marker
+boot-end-marker
+!
+!
+!
+no aaa new-model
+!
+!
+!
+mmi polling-interval 60
+no mmi auto-configure
+no mmi pvc
+mmi snmp-timeout 180
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+ip multicast-routing 
+ip cef
+no ipv6 cef
+!
+multilink bundle-name authenticated
+!
+!
+!
+!
+!
+redundancy
+!
+!
+! 
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+interface Loopback0
+ ip address 5.5.5.5 255.255.255.255
+!
+interface Loopback1
+ ip address 50.50.50.50 255.255.255.255
+!
+interface GigabitEthernet0/0
+ ip address 10.0.3.2 255.255.255.0
+ ip pim dense-mode
+ duplex auto
+ speed auto
+ media-type rj45
+!
+interface GigabitEthernet0/1
+ no ip address
+ ip pim dense-mode
+ shutdown
+ duplex auto
+ speed auto
+ media-type rj45
+!
+interface GigabitEthernet0/2
+ no ip address
+ shutdown
+ duplex auto
+ speed auto
+ media-type rj45
+!
+interface GigabitEthernet0/3
+ ip address 51.0.0.1 255.255.255.0
+ ip igmp join-group 239.1.1.1
+ duplex auto
+ speed auto
+ media-type rj45
+!
+!
+router eigrp 1
+ network 5.5.5.0 0.0.0.255
+ network 10.0.3.0 0.0.0.255
+ network 50.50.50.0 0.0.0.255
+ network 51.0.0.0
+!
+ip forward-protocol nd
+!
+!
+no ip http server
+no ip http secure-server
+!
+ipv6 ioam timestamp
+!
+!
+!
